@@ -9,10 +9,10 @@ public class BSTTest
 
 	String test1 = "a 10 a 5 a 15 a 1 a 20 a 2 a 17";
 
-	Scanner in = new Scanner(System.in);
+	Scanner in = new Scanner(test1);
 	//Scanner in = new Scanner(System.in);
 
-	in 
+	
 	while (in.hasNext())
 	    {
 		String command = in.next();
@@ -39,6 +39,6 @@ public class BSTTest
 		    }
 		System.out.println();
 	    }
-	System.out.println(t + "alsdjf");
+	System.out.println(t);
     }
 }

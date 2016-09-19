@@ -20,10 +20,24 @@ public class BinarySearchTree<E extends Comparable<? super E>>
      *
      * @return the number if items in this tree
      */
-    public int count()
+	public int count()
     {
-	return 0; // CHANGE THIS!
+	int s = 0;
+	Node<E> curr = root;
+	s = counting(s, curr);
+	return s;
     }
+
+    public int counting(int s, Node<E> curr){
+    	if(curr == null){
+    		return s;
+    	}
+    	else{
+    		s = counting(s, curr.left) + counting(s, curr.right) + 1;
+    		return s;
+    	}
+    } // CHANGE THIS!
+    
 
     /**
      * Adds the given value to this tree if it is not already present.
