@@ -241,15 +241,16 @@ public class BinarySearchTree<E extends Comparable<? super E>>
 		      {
 			  root = replacement;
 		      }
+		  if(replacement.parent != curr){
+		  	replacement.parent.left = replacementChild;
+			  if (replacementChild != null)
+			       {
+				   replacementChild.parent = replacement.parent;
+			      }
+			   replacement.right = curr.right;
+	  			curr.right.parent = replacement;
+			}
 		  
-		  replacement.parent.left = replacementChild;
-		  if (replacementChild != null)
-		      {
-			  replacementChild.parent = replacement.parent;
-		      }
-		  
-		  replacement.right = curr.right;
-		  curr.right.parent = replacement;
 
 		  replacement.left = curr.left;
 		  curr.left.parent = replacement;
@@ -277,7 +278,21 @@ public class BinarySearchTree<E extends Comparable<? super E>>
      */
     public Node<E> successor(Node<E> curr)
     {
-	return curr; // CHANGE THIS!
+	if(curr.right != null){
+		curr = curr.right;
+		while(curr.left != null){
+			curr = curr.left;
+		}
+		return curr;
+	}
+	Node<E> next = curr.parent;
+	while(next != null && next.right == curr){
+		curr = next;
+		next = next.parent;
+	}
+	return next;
+
+	
     }
 
     /**
